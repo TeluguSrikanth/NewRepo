@@ -1,4 +1,4 @@
-package com.example.test;
+package com.example.customerservice;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -11,18 +11,17 @@ import springfox.documentation.spring.web.plugins.Docket;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 @SpringBootApplication
-//@EnableSwagger2
-public class TestApplication {
+@EnableSwagger2
+public class CustomerServiceApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(TestApplication.class, args);
-	
+		SpringApplication.run(CustomerServiceApplication.class, args);
 	}
 	
-//	@Bean
-//	public ApiSelectorBuilder productApi() {
-//		return new Docket(DocumentationType.SWAGGER_2).select()
-//				.apis(RequestHandlerSelectors.basePackage("com.example.test"));
-//	}
+	@Bean
+	public ApiSelectorBuilder productApi() {
+		return new Docket(DocumentationType.SWAGGER_2).select()
+				.apis(RequestHandlerSelectors.basePackage("com.example.customerservice"));
+	}
 
 }

@@ -3,6 +3,8 @@ package com.example.test.controller;
 import java.util.List;
 import java.util.Optional;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -18,18 +20,22 @@ import com.example.test.repo.TestRepo;
 @RestController
 public class TestController {
 
+	private final Logger LOGGER = 
+			LoggerFactory.getLogger(TestController.class);
 	@Autowired
 	TestRepo testRepo;
 	
 	@PostMapping("/saveTest")
 	public Test saveTest(@RequestBody Test test)
 	{
+		
 		return testRepo.save(test);
 	}
 	
 	@GetMapping("/fetch")
 	public List<Test> findAll()
 	{
+		LOGGER.info("Srikanth Successfully executed the code");
 		return testRepo.findAll();
 	}
 	@GetMapping("/fetch/{Id}")
